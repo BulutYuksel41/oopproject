@@ -72,7 +72,6 @@ private:
         }
     }
 
-
     void Logic() {
         pair<int, int> prev = snake[0];
         pair<int, int> prev2;
@@ -97,9 +96,9 @@ private:
         if (snake[0].second >= height) snake[0].second = 0; 
         else if (snake[0].second < 0) snake[0].second = height - 1;
 
-        for (int i = 1; i < snake.size(); i++)
-            if (snake[0] == snake[i])
-                gameOver = true;
+        for (int i = 1; i < snake.size(); i++){
+            if (snake[0] == snake[i]){
+                gameOver = true;}}
 
         if (snake[0] == fruit) {
             score += 10;
