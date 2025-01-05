@@ -22,6 +22,7 @@ private:
         fruit.first = rand() % width;
         fruit.second = rand() % height;
     }
+
     void Draw() {
         COORD coord = {0, 0};
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
@@ -57,4 +58,16 @@ private:
             cout << "#";
         cout << endl;
         cout << "Score: " << score << endl;
-    }};
+    }
+
+    void Input() {
+        if (_kbhit()) {
+            switch (_getch()) {
+                case 'a': dir = LEFT; break;
+                case 'd': dir = RIGHT; break;
+                case 'w': dir = UP; break;
+                case 's': dir = DOWN; break;
+                case 'x': gameOver = true; break;
+            }
+        }
+    }
