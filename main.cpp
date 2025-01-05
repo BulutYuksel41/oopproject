@@ -106,5 +106,49 @@ private:
             GenerateFruit();
         }
     }};
+public:
+    SnakeGame(int w, int h) : width(w), height(h), gameOver(false), score(0), dir(STOP) {
+        snake.push_back({width / 2, height / 2});
+        GenerateFruit();
+    }
 
+    int Difficulty(int b) {
+        if (b == 1) {
+            return 250;
+        } else if (b == 2) {
+            return 175;
+        } else if (b == 3) {
+            return 100;
+        }
+        return 250; // Default
+    }
+
+    void Run() {
+        while (true) {
+            cout << "Select difficulty (1~3): ";
+            cin >> diffinput;
+            if (diffinput >= 1 && diffinput <= 3) break;
+            cout << "Unknown parameter given. Please try again." << endl;
+            system("cls");
+        }
+
+        int delay = Difficulty(diffinput);
+
+        while (!gameOver) {
+            Draw();
+            Input();
+            Logic();
+            Sleep(delay);
+        }
+        cout << "Game Over!" << endl;
+    }
+};
+int main() {
+    SnakeGame game(20, 20);
+    game.Run();
+    system("cls");
+    cout<<"Game Over";
+    getch();
+    return 0;
+}
 
