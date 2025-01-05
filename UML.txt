@@ -1,0 +1,31 @@
++---------------------------------+
+|      SnakeGame                  |
++---------------------------------+
+| - difficulty: int               |
+| - diffinput: int                |
+| - width: const int              |
+| - height: const int             |
+| - gameOver: bool                |
+| - score: int                    |
+| - dir: eDirection               |
+| - fruit: pair<int, int>         |
+| - snake: vector<pair<int, int>> |
++---------------------------------+
+| + SnakeGame(w: int, h: int)     |
+| + Difficulty(b: int): int       |
+| + Run(): void                   |
+| - GenerateFruit(): void         |
+| - Draw(): void                  |
+| - Input(): void                 |
+| - Logic(): void                 |
++---------------------------------+
+
++----------------------+
+|     eDirection       |
++----------------------+
+| STOP = 0             |
+| LEFT                 |
+| RIGHT                |
+| UP                   |
+| DOWN                 |
++----------------------+
