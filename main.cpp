@@ -57,4 +57,39 @@ private:
             cout << "#";
         cout << endl;
         cout << "Score: " << score << endl;
+    }
+
+    void Logic() {
+        pair<int, int> prev = snake[0];
+        pair<int, int> prev2;
+
+        for (int i = 1; i < snake.size(); i++) {
+            prev2 = snake[i];
+            snake[i] = prev;
+            prev = prev2;
+        }
+
+        switch (dir) {
+            case LEFT: snake[0].first--; break;
+            case RIGHT: snake[0].first++; break;
+            case UP: snake[0].second--; break;
+            case DOWN: snake[0].second++; break;
+            default: break;
+        }
+
+        if (snake[0].first >= width) snake[0].first = 0; 
+        else if (snake[0].first < 0) snake[0].first = width - 1;
+        
+        if (snake[0].second >= height) snake[0].second = 0; 
+        else if (snake[0].second < 0) snake[0].second = height - 1;
+
+        for (int i = 1; i < snake.size(); i++)
+            if (snake[0] == snake[i])
+                gameOver = true;
+
+        if (snake[0] == fruit) {
+            score += 10;
+            snake.push_back({0, 0});
+            GenerateFruit();
+        }
     }};
